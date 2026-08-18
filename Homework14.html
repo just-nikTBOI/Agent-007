@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harry Potter</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+}
+
+.container{
+    width:1200px;
+    margin:0 auto;
+}
+
+header{
+    background:#18354a;
+    padding:20px 0;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:32px;
+    font-weight:bold;
+}
+
+.menu{
+    display:flex;
+    gap:40px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+}
+
+.login-btn{
+    background:#00bfff;
+    color:white;
+    border:none;
+    padding:12px 30px;
+    cursor:pointer;
+}
+
+.hero{
+    height:600px;
+    background:url("images/hero.jpg") center/cover no-repeat;
+    display:flex;
+    align-items:center;
+}
+
+.hero-content{
+    width:400px;
+    color:white;
+    margin-left:60px;
+}
+
+.hero-content p{
+    margin:20px 0;
+    line-height:1.5;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    border:2px solid #00bfff;
+    color:white;
+    text-decoration:none;
+}
+
+.quote{
+    text-align:center;
+    padding:80px 20px;
+    background:white;
+}
+
+.quote h2{
+    color:#1e4d6d;
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.quote p{
+    font-size:24px;
+}
+
+.banner{
+    height:500px;
+    background:url("images/banner.jpg") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.banner .btn{
+    background:rgba(0,0,0,0.5);
+}
+
+footer{
+    padding:40px;
+    text-align:center;
+    background:#18354a;
+    color:white;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="container nav">
+
+        <div class="logo">
+            Harry Potter
+        </div>
+
+        <nav class="menu">
+            <a href="#">Головна</a>
+            <a href="#">Про нас</a>
+            <a href="#">Контакти</a>
+        </nav>
+
+        <button class="login-btn">
+            Увійти
+        </button>
+
+    </div>
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p>
+            Треба бути дуже хоробрим, щоб чинити опір ворогам,
+            але потрібна не менша хоробрість,
+            щоб чинити опір друзям.
+        </p>
+
+        <p>Альбус Дамблдор</p>
+
+        <a href="#" class="btn">
+            Приєднатися
+        </a>
+
+    </div>
+
+</section>
+
+<section class="quote">
+    <h2>
+        "НЕ ІСНУЄ НІЧОГО НЕМОЖЛИВОГО,
+        ЯКЩО МАЄШ КРИХТУ ЗУХВАЛЬСТВА."
+    </h2>
+
+    <p>Джіні Візлі</p>
+</section>
+
+<section class="banner">
+
+    <a href="#" class="btn">
+        Дивитись трейлер
+    </a>
+
+</section>
+
+<section class="quote">
+    <h2>
+        "МИ СИЛЬНІ РІВНО НАСТІЛЬКИ,
+        НА СКІЛЬКИ ОБ'ЄДНАНІ,
+        І НА СТІЛЬКИ Ж СЛАБКІ —
+        НА СКІЛЬКИ РОЗДІЛЕНІ."
+    </h2>
+
+    <p>Альбус Дамблдор</p>
+</section>
+
+<footer>
+    Harry Potter Fan Site © 2026
+</footer>
+
+</body>
+</html>
