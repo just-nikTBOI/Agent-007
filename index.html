@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}
+Планувальник подій
+{% endblock %}
+
+{% block content %}
+
+<h1>Планувальник подій</h1>
+
+<form action="/add" method="POST">
+
+    <input
+        type="text"
+        name="title"
+        placeholder="Назва події"
+        required>
+
+    <input
+        type="date"
+        name="date"
+        required>
+
+    <textarea
+        name="description"
+        placeholder="Опис події"></textarea>
+
+    <button type="submit">
+        Додати подію
+    </button>
+
+</form>
+
+<div class="events">
+
+{% for event in events %}
+
+<div class="card">
+
+    <h3>{{ event.title }}</h3>
+
+    <p>
+        <strong>Дата:</strong>
+        {{ event.date }}
+    </p>
+
+    <p>{{ event.description }}</p>
+
+    <form
+        action="/delete/{{ event.id }}"
+        method="POST">
+
+        <button type="submit">
+            Видалити
+        </button>
+
+    </form>
+
+</div>
+
+{% else %}
+
+<p>Подій ще немає.</p>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

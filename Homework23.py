@@ -1,58 +1,48 @@
-class Event:
-    def __init__(self, title, date):
-        self.title = title
-        self.date = date
+from flask import Flask, render_template, request, redirect
 
-    def get_info(self):
-        return f"Назва: {self.title} | Дата: {self.date}"
-
+app = Flask(__name__)
 
 events = []
+next_id = 1
 
-while True:
-    print("\n--- Планувальник подій ---")
-    print("1. Додати подію")
-    print("2. Показати всі події")
-    print("3. Видалити подію")
-    print("4. Вийти")
+@app.route("/")
+def index():
+    return render_template("index.html", events=events)
 
-    choice = input("Оберіть пункт: ")
+@app.route("/add", methods=["POST"])
+def add_event():
+    global next_id
 
-    if choice == "1":
-        title = input("Введіть назву події: ")
-        date = input("Введіть дату: ")
+    title = request.form.get("title")
+    date = request.form.get("date")
+    description = request.form.get("description")
 
-        event = Event(title, date)
-        events.append(event)
+    if title and date:
+        events.append({
+            "id": next_id,
+            "title": title,
+            "date": date,
+            "description": description
+        })
+        next_id += 1
 
-        print("Подію додано!")
+    return redirect("/")
 
-    elif choice == "2":
-        if len(events) == 0:
-            print("Подій немає.")
-        else:
-            print("\nСписок подій:")
-            for i, event in enumerate(events, start=1):
-                print(f"{i}. {event.get_info()}")
+@app.route("/delete/<int:event_id>", methods=["POST"])
+def delete_event(event_id):
+    global events
 
-    elif choice == "3":
-        if len(events) == 0:
-            print("Немає подій для видалення.")
-        else:
-            for i, event in enumerate(events, start=1):
-                print(f"{i}. {event.get_info()}")
+    events = [
+        event
+        for event in events
+        if event["id"] != event_id
+    ]
 
-            index = int(input("Введіть номер події для видалення: ")) - 1
+    return redirect("/")
 
-            if 0 <= index < len(events):
-                deleted = events.pop(index)
-                print(f"Подію '{deleted.title}' видалено.")
-            else:
-                print("Невірний номер.")
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
-    elif choice == "4":
-        print("До побачення!")
-        break
-
-    else:
-        print("Невірний вибір. Спробуйте ще раз.")
+if __name__ == "__main__":
+    app.run(debug=True)
